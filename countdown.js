@@ -32,7 +32,7 @@ function countdownInternal(countdownObjective, template, withPadding, onTick, on
     // Finally update using onTick()
     onTick(template, totalSeconds)
 
-    // Finish countdown & Stop this interval 
+    // Finish countdown & Stop this interval
     // Note: Using totalSeconds as seconds is recalculated with minutes
     if (totalSeconds <= 0) {
         onFinish()
@@ -45,7 +45,7 @@ export default function countdown({
     seconds,
     template = '{hours}:{minutes}:{seconds}',
     withPadding = true,
-    onTick = (string, remainingSeconds) => { },
+    onTick = (formatted, remaining) => { },
     onFinish = () => { },
 }) {
     // If window is undefined, this is a SSR request

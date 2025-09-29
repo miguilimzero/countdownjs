@@ -2,7 +2,7 @@ export default function countup({
     time,
     locale,
     format = { timeStyle: 'medium', timeZone: 'UTC' },
-    onTick = (formattedTime) => { },
+    onTick = (formatted) => { },
 }) {
     const serverDate = new Date(time * 1000)
     const localDate = new Date()
@@ -18,9 +18,9 @@ export default function countup({
         const elapsed = new Date().getTime() - localDate.getTime()
 
         const currentDate = new Date(serverDate.getTime() + elapsed)
-        const formattedTime = Intl.DateTimeFormat(locale, format).format(currentDate)
+        const formatted = Intl.DateTimeFormat(locale, format).format(currentDate)
 
-        onTick(formattedTime)
+        onTick(formatted)
     }
 
     // Call the first time, in order to avoid waiting 1 second of the setInterval()
